@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
+//import jdev.dto.PointDTO;
 /**
  * Created by user on 31.01.2021.
  */
