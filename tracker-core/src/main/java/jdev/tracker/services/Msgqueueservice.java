@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.TimeUnit;
+import jdev.domain.Jform;
 
 /**
  * Created by user on 04.02.2021.
@@ -16,11 +17,9 @@ public class Msgqueueservice {
 
     @Autowired
     private Msgsendservice msgsendservice;
-
     @PostConstruct @Scheduled (cron= "${cron.prop2}") //60000
-    private void init() throws InterruptedException,Exception {
-        Jform.toJson(queue.poll(500, TimeUnit.MILLISECONDS));
-       // msgsendservice.sendmsg=queue.take();
+    private void init() throws InterruptedException,Exception,java.lang.NullPointerException {
+        Jform.toJson(queue.poll(10, TimeUnit.MILLISECONDS));
         msgsendservice.send();
     }
 }

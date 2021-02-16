@@ -1,8 +1,5 @@
 package jdev.tracker.services;
-import com.maxmind.geoip.Location;
 import com.maxmind.geoip.LookupService;
-import com.maxmind.geoip.regionName;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.stereotype.Component;
@@ -10,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.Random;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by user on 04.02.2021.
@@ -26,10 +25,11 @@ public class GPSservice {
     private String Adr="127.0.0.1";
     private String City="Z";
     private Float la,lo;
-    private Integer rand1,rand2;
+    private Integer rand1,rand2,rand3;
+    private static final Logger log = LoggerFactory.getLogger(GPSservice.class);
     @PostConstruct
     @Scheduled(cron= "${cron.prop}")
-    private void job() {
+    public void job() throws InterruptedException {
 
         try {
             Random objGenerator = new Random();
@@ -38,7 +38,8 @@ public class GPSservice {
 
                 rand1 = objGenerator.nextInt(255);         // генерируем ip
                 rand2 = objGenerator.nextInt(255);
-                Adr=rand1.toString()+".123.12."+rand2.toString();
+                rand3 = objGenerator.nextInt(255);
+                Adr=rand1.toString()+".123.13."+rand3.toString();
                 la=cl.getLocation(Adr).latitude;
                 lo=cl.getLocation(Adr).longitude;
                 las=la.toString();
@@ -51,15 +52,16 @@ public class GPSservice {
             msqueuservice.queue.put("track# " + i + " lattitude=" + las + " longtitude=" + los+" "+City);
             cl.close();
         } catch (IOException e1) {
-            System.out.println("IO Exception");
+            log.info("IO Exception");
         }
      catch (java.lang.InterruptedException j)
     {
-        System.out.println("Interrupted Exception");
+        log.info("Interrupted Exception");
     }
     catch (java.lang.NullPointerException n)
     {
-        System.out.println("Нет связи с IP....");
+       // log.info("Нет связи с IP....");
+        msqueuservice.queue.put("IP not found");
     }
     }
     }

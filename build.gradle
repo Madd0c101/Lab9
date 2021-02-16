@@ -3,35 +3,34 @@ subprojects{
   repositories {
     mavenCentral()
     mavenLocal()
+
+      ext {
+          jettyV = "9.4.1.v20170120"
+      }
   }
     dependencies {
         testCompile group: 'junit', name: 'junit', version: '4.12'
         compile group: 'junit', name: 'junit', version: '4.12'
-        compile group: 'org.springframework', name: 'spring-core', version: '4.3.7.RELEASE'
-        compile group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
-        compile group: 'org.springframework', name: 'spring-aop', version: '4.3.7.RELEASE'
-        compile group: 'org.springframework', name: 'spring-beans', version: '4.3.7.RELEASE'
-        compile group: 'org.springframework', name: 'spring-expression', version: '4.3.7.RELEASE'
-        compile group: 'org.springframework.amqp', name: 'spring-amqp', version: '2.3.4'
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.2'
-        compile group: 'org.springframework', name: 'spring-jms', version: '5.3.3'
-        compile group: 'org.apache.activemq', name: 'activemq-client', version: '5.8.0'
         compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
         compile group: 'org.json', name: 'json', version: '20201115'
-        compile group: 'com.github.scr', name: 'memory-mapped-hashmap', version: '1.1.1'
-        compile group: 'javax.json', name: 'javax.json-api', version: '1.1.4'
-        compile group: 'com.maxmind.geoip', name: 'geoip-api', version: '1.2.11'
-  //      compile group: 'com.maxmind.geoip2', name: 'geoip2', version: '2.12.0'
-        compile group: 'cglib', name: 'cglib', version: '2.2.2'
-        compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
-        compile group: 'org.springframework', name: 'spring-webmvc', version: '5.3.3'
+        compile group: 'io.spring.gradle', name: 'dependency-management-plugin', version: '1.0.11.RELEASE'
+        compile group: 'log4j', name: 'log4j', version: '1.2.17'
+        compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+
     }
 }
 
 project(':common') {
+    apply plugin: 'java-library-distribution'
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
   dependencies{
     //  testCompile group: 'junit', name: 'junit', version: '4.12'
       compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+      compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+      compile("org.springframework.boot:spring-boot-devtools")
+      compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+      compile("org.springframework.boot:spring-boot-devtools")
     //  compile group: 'junit', name: 'junit', version: '4.12'
               }
   }
@@ -48,17 +47,30 @@ buildscript {
   //      testCompile group: 'junit', name: 'junit', version: '4.12'
     }
 }
+*/
 project(':server-core') {
     apply plugin: 'java-library-distribution'
-    apply plugin: 'gradle-one-jar'
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+  //  apply plugin: 'gradle-one-jar'
     dependencies {
         compile project(':common')
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+        compile("org.springframework.boot:spring-boot-devtools")
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+        compile("org.springframework.boot:spring-boot-devtools")
+        testCompile("org.springframework.boot:spring-boot-starter-test")
     }
-    task fatJar(type: OneJar) {
-        mainClass = 'jdev.tracker.Main'
+    jar {
+        baseName = 'gessing-boot'
+        version =  '0.1.0'
     }
+//    task fatJar(type: OneJar) {
+//        mainClass = 'jdev.tracker.Main'
+//    }
   }
-
+/*
   project(':server-ui') {
       apply plugin: 'java-library-distribution'
       apply plugin: 'gradle-one-jar'
@@ -73,10 +85,36 @@ project(':server-core') {
   */
   project(':tracker-core') {
       apply plugin: 'java-library-distribution'
+      apply plugin: 'java'
+      apply plugin: 'org.springframework.boot'
   //    apply plugin: 'gradle-one-jar'
       dependencies {
           compile project(':common')
+          compile project(':server-core')
+          compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '6.3'          //!!!!!
+          compile group: 'org.projectlombok', name: 'lombok', version: '1.18.10'                       //!!!!!!!!
           compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+        //  compile group: 'org.springframework', name: 'spring-core', version: '4.3.7.RELEASE'
+        //  compile group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
+       //   compile group: 'org.springframework', name: 'spring-aop', version: '4.3.7.RELEASE'
+        //  compile group: 'org.springframework', name: 'spring-beans', version: '4.3.7.RELEASE'
+       //   compile group: 'org.springframework', name: 'spring-expression', version: '4.3.7.RELEASE'
+       //   compile group: 'org.springframework.amqp', name: 'spring-amqp', version: '2.3.4'
+       //   compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.2'
+        //  compile group: 'org.springframework', name: 'spring-jms', version: '5.3.3'
+          compile group: 'org.apache.activemq', name: 'activemq-client', version: '5.8.0'
+          compile group: 'com.github.scr', name: 'memory-mapped-hashmap', version: '1.1.1'
+          compile group: 'javax.json', name: 'javax.json-api', version: '1.1.4'
+          compile group: 'com.maxmind.geoip', name: 'geoip-api', version: '1.2.11'
+          compile group: 'cglib', name: 'cglib', version: '2.2.2'
+          compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
+        //  compile group: 'org.springframework', name: 'spring-webmvc', version: '5.3.3'
+          compile group: 'commons-io', name: 'commons-io', version: '2.5'
+          compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+          compile("org.springframework.boot:spring-boot-devtools")
+          compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+          compile("org.springframework.boot:spring-boot-devtools")
+          testCompile("org.springframework.boot:spring-boot-starter-test")
       }
   //    task fatJar(type: OneJar) {
   //        mainClass = 'jdev.tracker.Main'
@@ -95,3 +133,12 @@ project(':server-core') {
         }
   }
 */
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}

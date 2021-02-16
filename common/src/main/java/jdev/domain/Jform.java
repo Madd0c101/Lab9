@@ -1,7 +1,5 @@
-package jdev.tracker.services;
+package jdev.domain;
 import jdev.dto.PointDTO;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 public class Jform {
@@ -15,7 +13,7 @@ public class Jform {
         point.setAutoId(a);
         //    point.setLat(45);
     }
-    public static String fromJson() throws Exception {
+    public static String fromJson() throws Exception,Exception {
        // ObjectMapper mapper = new ObjectMapper();
       // PointDTO dto=mapper.readValue(point.getAutoId(),PointDTO.class);
         return point.getAutoId();

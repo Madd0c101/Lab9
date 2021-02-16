@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:text="'Пользователь ' + ${name} + ' получил доступ'" />
+    <p th:text="'опрос: ' + ${num}" />
+    <p th:text="(${num} != 'connection lost error')? 'Координата получена' : 'Сбой в отправке...'" />
+    <a href=""><span th:text="'Обновить данные...'"></span></a>
+</body>
+</html>
