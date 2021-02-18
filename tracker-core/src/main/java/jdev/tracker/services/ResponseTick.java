@@ -1,6 +1,5 @@
 package jdev.tracker.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jdev.server.controllers.CounterController_SRV;
 import jdev.tracker.controllers.CounterController_TRK;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,12 +8,6 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import ch.qos.logback.core.recovery.ResilientFileOutputStream;
-import ch.qos.logback.core.util.ContextUtil;
-import ch.qos.logback.core.util.FileSize;
-import ch.qos.logback.core.util.FileUtil;
-import sun.util.logging.PlatformLogger;
 
 import static jdev.tracker.services.Msgsendservice.request;
 

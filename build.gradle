@@ -70,19 +70,26 @@ project(':server-core') {
 //        mainClass = 'jdev.tracker.Main'
 //    }
   }
-/*
+
   project(':server-ui') {
-      apply plugin: 'java-library-distribution'
-      apply plugin: 'gradle-one-jar'
+     // apply plugin: 'java-library-distribution'
+     // apply plugin: 'gradle-one-jar'
+      apply plugin: 'java'
+      apply plugin: 'org.springframework.boot'
       dependencies {
           compile project(':common')
-          compile project(':server-core')
+          compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+          // tag::security[]
+          compile("org.springframework.boot:spring-boot-starter-security")
+          // end::security[]
+          testCompile("junit:junit")
+          testCompile("org.springframework.boot:spring-boot-starter-test")
+          testCompile("org.springframework.security:spring-security-test")
       }
-      task fatJar(type: OneJar) {
-          mainClass = 'jdev.tracker.Main'
-      }
+      //task fatJar(type: OneJar) {
+       //   mainClass = 'jdev.tracker.Main'
+     // }
   }
-  */
   project(':tracker-core') {
       apply plugin: 'java-library-distribution'
       apply plugin: 'java'

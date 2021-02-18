@@ -1,4 +1,4 @@
-package jdev.server.controllers;
+package jdev.server.main.controllers;
 
 import jdev.domain.Jform;
 import jdev.server.services.getcoord;
