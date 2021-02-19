@@ -10,9 +10,15 @@
         <p>Кликните <a th:href="@{/payments}">здесь</a>,для отобрадения платежей если Вы - клиент</p>
         <p>Кликните <a th:href="@{/registerClient}">здесь</a>,для регистрации клиентов, если Вы - Manager.</p>
         <p>Кликните <a th:href="@{/registerManager}">здесь</a>,для регистрации менеджеров если Вы - Root.</p>
+
+        <img class="users" href="#">
+        <img th:src="@{http://127.0.0.1:8080/css/img/hello.jpg}" alt="" width="400 px" height="200 px"/>
+        </img>
+
         <p>Кликните здесь ,если вы хотите выйти</p>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Выйти из системы"/>
         </form>
+
     </body>
 </html>

@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-//@EnableWebMvc
+@EnableWebMvc
 public class ServerUiConfig extends WebMvcConfigurerAdapter {
 
     @Override
@@ -22,14 +22,14 @@ public class ServerUiConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/registerClient").setViewName("registerClient");
         registry.addViewController("/registerManager").setViewName("registerManager");
     }
-/*
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(
                 "/img/**",
                 "/css/**")
                 .addResourceLocations(
+                        "classpath:/CSS/img",
                         "classpath:/CSS/");
     }
-    */
 }
