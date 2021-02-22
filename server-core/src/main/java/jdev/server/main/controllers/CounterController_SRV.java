@@ -33,7 +33,7 @@ public class CounterController_SRV {
     }
 
 
-
+/*
     @PostMapping("/post")
     public static Response post(@RequestParam(value = "key") String key, @RequestBody RestRequest request) throws java.lang.Exception{
 
@@ -54,5 +54,5 @@ public class CounterController_SRV {
         }
         return response;
     }
-
+*/
         }

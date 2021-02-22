@@ -34,7 +34,7 @@ public class getcoord {
        //     log.info("2");
        // return ReqCreate.request.getCoord();
         try {
-            FileReader fr = new FileReader("..\\tracker-core\\src\\main\\resources\\log_file.log");
+            FileReader fr = new FileReader("tracker-core\\src\\main\\resources\\log_file.log");
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
             while (line != null) {
@@ -43,10 +43,12 @@ public class getcoord {
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+           // log.info("HERE 1", position);
         } catch (IOException e) {
             e.printStackTrace();
+          //  log.info("HERE 2", position);
         }
-             log.info("SRV reading: {}", position);
+        log.info("SRV reading: {}", position);
         return position;
 
     }

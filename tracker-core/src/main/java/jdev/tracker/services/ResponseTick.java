@@ -24,11 +24,11 @@ public class ResponseTick {
         String json = mapper.writeValueAsString(request.getCoord() + " " + CounterController_TRK.showStatus().getStatus());
         log.info("POST by tracker: {}", json);
         try {
-            FileWriter fw = new FileWriter("..\\tracker-core\\src\\main\\resources\\log_file.log",true);
+            FileWriter fw = new FileWriter("tracker-core\\src\\main\\resources\\log_file.log",true);
             BufferedWriter writer = new BufferedWriter(fw);
             writer.write(json + System.getProperty("line.separator"));
-         //   writer.flush();
-         //   writer.close();
+            writer.flush();
+            writer.close();
         }
         catch (IOException e){
             e.printStackTrace();
