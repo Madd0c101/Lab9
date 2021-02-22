@@ -34,7 +34,7 @@ public class getcoord {
        //     log.info("2");
        // return ReqCreate.request.getCoord();
         try {
-            FileReader fr = new FileReader("tracker-core\\src\\main\\resources\\log_file.log");
+            FileReader fr = new FileReader("..\\tracker-core\\src\\main\\resources\\log_file.log");
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
             while (line != null) {

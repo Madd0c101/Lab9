@@ -22,7 +22,7 @@ public class Application {
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        ReqCreate.create();
+   //     ReqCreate.create();
         return builder.build();
     }
 }

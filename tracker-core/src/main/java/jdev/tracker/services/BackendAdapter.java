@@ -21,7 +21,14 @@ public class BackendAdapter {
     }
 
     public String getRequests() {
-        ResponseEntity<String> response = restTemplate.getForEntity(backendUrl + REQUESTS_ENDPOINT, String.class);
-        return response.getBody();
+        try {
+            restTemplate.getForEntity(backendUrl + REQUESTS_ENDPOINT, String.class);
+        }
+        catch (NullPointerException n)
+        {
+            return "";
+        }
+        ResponseEntity<String> response =restTemplate.getForEntity(backendUrl + REQUESTS_ENDPOINT, String.class);
+        return response.toString();
     }
 }

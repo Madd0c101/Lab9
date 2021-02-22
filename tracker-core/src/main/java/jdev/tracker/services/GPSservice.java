@@ -33,7 +33,7 @@ public class GPSservice {
 
         try {
             Random objGenerator = new Random();
-            LookupService cl = new LookupService("tracker-core\\src\\main\\resources\\GeoLiteCity.dat",
+            LookupService cl = new LookupService("..\\tracker-core\\src\\main\\resources\\GeoLiteCity.dat",
                     LookupService.GEOIP_MEMORY_CACHE | LookupService.GEOIP_CHECK_CACHE);
 
                 rand1 = objGenerator.nextInt(255);         // генерируем ip
@@ -61,7 +61,12 @@ public class GPSservice {
     catch (java.lang.NullPointerException n)
     {
        // log.info("Нет связи с IP....");
-        msqueuservice.queue.put("IP not found");
+        try {
+            msqueuservice.queue.put("IP not found");
+        }
+        catch (NullPointerException n2) {
+            log.info("service not found");
+        }
     }
     }
     }

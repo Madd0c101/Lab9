@@ -1,4 +1,4 @@
-rootProject.name = "Lab6"
+rootProject.name = "Lab7"
 include 'common'
 include 'tracker-core'
 include 'server-core'

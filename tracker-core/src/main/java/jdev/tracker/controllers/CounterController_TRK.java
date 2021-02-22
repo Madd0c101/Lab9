@@ -2,7 +2,6 @@ package jdev.tracker.controllers;
 
 import jdev.domain.Response;
 import jdev.domain.RestRequest;
-import jdev.tracker.services.BackendAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,4 +79,4 @@ public class CounterController_TRK {
         return response;
     }
 
-        }
+}

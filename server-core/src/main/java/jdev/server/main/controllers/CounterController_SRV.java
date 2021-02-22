@@ -1,5 +1,6 @@
 package jdev.server.main.controllers;
 import jdev.domain.Response;
+import jdev.domain.RestRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -32,7 +33,7 @@ public class CounterController_SRV {
     }
 
 
-    /*
+
     @PostMapping("/post")
     public static Response post(@RequestParam(value = "key") String key, @RequestBody RestRequest request) throws java.lang.Exception{
 
@@ -53,6 +54,5 @@ public class CounterController_SRV {
         }
         return response;
     }
-    */
 
         }
