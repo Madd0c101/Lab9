@@ -48,8 +48,8 @@ public class JpaApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication.run(JpaApplication.class, args);
     }
-   // public static String path="tracker-core\\src\\main\\resources\\log_file.log"; //run
-    public static String path="..\\tracker-core\\src\\main\\resources\\log_file.log"; //test
+    public static String path="tracker-core\\src\\main\\resources\\log_file.log"; //run
+   // public static String path="..\\tracker-core\\src\\main\\resources\\log_file.log"; //test
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {
