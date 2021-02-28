@@ -43,8 +43,8 @@ public class JpaApplication implements CommandLineRunner {
     private static String line;
     public static String[] out2;
     public static TrackBase[] arr;
-    public static String path="tracker-core\\src\\main\\resources\\log_file.log"; //run
-    // public static String path="..\\tracker-core\\src\\main\\resources\\log_file.log"; //test
+    public static String path="tracker-core\\src\\main\\resources\\log_file.log"; //RUN PATH
+    // public static String path="..\\tracker-core\\src\\main\\resources\\log_file.log"; //TEST PATH
     public static void main(String[] args) {
         SpringApplication.run(JpaApplication.class, args);
     }
