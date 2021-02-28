@@ -2,6 +2,8 @@ package jdev.tracker.controllers;
 
 import jdev.domain.Response;
 import jdev.domain.RestRequest;
+import jdev.server.main.Application;
+import jdev.server.main.controllers.CounterController_SRV;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class CounterController_TRK {
     private static String coord="";
     private static String STATUS = "error";
     public CounterController_TRK(@Autowired RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+        this.restTemplate = CounterController_SRV.restTemplate;
     }
 
 

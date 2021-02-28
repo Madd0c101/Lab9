@@ -6,7 +6,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class MsgsendserviceTest {
+public class MsgpostTest {
 
     @Test
     public void sendtest() throws Exception {

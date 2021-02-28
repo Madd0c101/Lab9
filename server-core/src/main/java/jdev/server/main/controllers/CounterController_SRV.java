@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 @RequestMapping("/geoS")
 public class CounterController_SRV {
-    private final RestTemplate restTemplate;
+    public static  RestTemplate restTemplate;
     private static final String sharedKey = "SHARED_KEY";
     private static final String SUCCESS_STATUS = "success";
     private static final String ERROR_STATUS = "error";
@@ -33,26 +33,25 @@ public class CounterController_SRV {
     }
 
 
-/*
+
     @PostMapping("/post")
-    public static Response post(@RequestParam(value = "key") String key, @RequestBody RestRequest request) throws java.lang.Exception{
+    public static Response post(@RequestParam(value = "key") String key, @RequestBody RestRequest request) throws Exception {
 
         final Response response;
 
         if (key.equals("good")) {
-      //      request.setCoord(Jform.fromJson());
-        coord = request.getCoord();
-        STATUS=SUCCESS_STATUS;
+            //      request.setCoord(Jform.fromJson());
+            coord = request.getCoord();
+            STATUS = SUCCESS_STATUS;
             // Process the request
-        //log.info(coord);
+            //log.info(coord);
 
             // Return success response to the client.
             response = new Response(SUCCESS_STATUS, CODE_SUCCESS);
         } else {
             response = new Response(ERROR_STATUS, AUTH_FAILURE);
-            STATUS=ERROR_STATUS;
+            STATUS = ERROR_STATUS;
         }
         return response;
     }
-*/
         }

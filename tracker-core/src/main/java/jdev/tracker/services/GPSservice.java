@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import jdev.tracker.jpa.JpaApplication;
 
 /**
  * Created by user on 04.02.2021.
@@ -45,11 +46,12 @@ public class GPSservice {
                 las=la.toString();
                 los=lo.toString();
                 if (cl.getLocation(Adr).city.isEmpty())
-                    City=cl.getLocation(Adr).countryName+" Suburbs";
+                    City=" Suburbs";
                 else
-                City=cl.getLocation(Adr).countryName+" "+cl.getLocation(Adr).city;
+                City=cl.getLocation(Adr).city;
             int i = putCount++;
-            msqueuservice.queue.put("track# " + i + " lattitude=" + las + " longtitude=" + los+" "+City);
+            msqueuservice.queue.put(i + ","+ las +"," + los+","+cl.getLocation(Adr).countryName.replace(",", "")+","+City.replace(",", ""));
+        //    JpaApplication.setLine(i,la,lo,cl.getLocation(Adr).countryName,cl.getLocation(Adr).city);
             cl.close();
         } catch (IOException e1) {
             log.info("IO Exception");
@@ -62,7 +64,7 @@ public class GPSservice {
     {
        // log.info("Нет связи с IP....");
         try {
-            msqueuservice.queue.put("IP not found");
+            msqueuservice.queue.put(0 + ","+ 99f +"," + 99f+","+"ip not found"+","+"ip not found");
         }
         catch (NullPointerException n2) {
             log.info("service not found");

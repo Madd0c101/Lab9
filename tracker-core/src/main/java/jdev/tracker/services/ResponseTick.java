@@ -21,11 +21,12 @@ public class ResponseTick {
     public void run() throws IOException, InterruptedException, java.lang.Exception {
 
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(request.getCoord() + " " + CounterController_TRK.showStatus().getStatus());
-        log.info("POST by tracker: {}", json);
+        String json = mapper.writeValueAsString(request.getCoord());
+        log.info("POST by tracker: {}", json+ " " + CounterController_TRK.showStatus().getStatus());
         try {
             FileWriter fw = new FileWriter("tracker-core\\src\\main\\resources\\log_file.log",true);
             BufferedWriter writer = new BufferedWriter(fw);
+            if ((!json.equals(null))&&(!json.contains("null")))
             writer.write(json + System.getProperty("line.separator"));
             writer.flush();
             writer.close();
