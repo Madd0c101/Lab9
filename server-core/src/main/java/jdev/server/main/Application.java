@@ -3,6 +3,7 @@ import jdev.domain.RestRequest;
 import jdev.server.jpa.JpaApplication;
 import jdev.server.main.controllers.CounterController_SRV;
 import jdev.server.services.Msgpost;
+import jdev.server.services.Thread;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import jdev.server.jpa.JpaApplication;
@@ -38,9 +39,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @ComponentScan({"jdev.server", "jdev.server.services", "jdev.domain"})
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
        // SpringApplication.run(JpaApplication.class, args);
-        SpringApplication.run(Application.class, args);
+       // SpringApplication.run(Application.class, args);
+        Thread.start();
 
 
     }

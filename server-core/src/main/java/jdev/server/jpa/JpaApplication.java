@@ -49,7 +49,7 @@ public class JpaApplication implements CommandLineRunner {
         SpringApplication.run(JpaApplication.class, args);
     }
    // public static String path="tracker-core\\src\\main\\resources\\log_file.log"; //RUN PATH
-    public static String path="..\\tracker-core\\src\\main\\resources\\log_file.log"; //TEST PATH
+    public static String path="tracker-core\\src\\main\\resources\\log_file.log"; //TEST PATH
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {
@@ -110,7 +110,7 @@ public class JpaApplication implements CommandLineRunner {
 
         log.info("=========== after create");
         try {
-            read();
+        //    read();
         }
         catch (NullPointerException n)
         {
@@ -133,8 +133,8 @@ public class JpaApplication implements CommandLineRunner {
      e.printStackTrace();
  }
         lines.stream().forEach(base -> update(base, "Rome"));
-        log.info("=========== after update");
-        read();
+      //  log.info("=========== after update");
+     //   read();
 try {
     trackBaseRepository.deleteAll();
 }
@@ -142,8 +142,8 @@ catch (NullPointerException n)
 {
     n.printStackTrace();
 }
-        log.info("=========== after delete");
-        read();
+      //  log.info("=========== after delete");
+      //  read();
 
     }
 
