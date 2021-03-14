@@ -49,7 +49,12 @@ public class BadThreads {
             Thread.sleep(10);
             correctorThread.start();
             try {
-                correctorThread.join();
+                if (n<=1000)
+                correctorThread.join(10);
+                else
+                {
+                    correctorThread.join();
+                }
                // System.out.println("here");
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -88,7 +93,8 @@ public class BadThreads {
               sum++;
       }
       System.out.printf("Кол-во Помиловать= %s%n", sum);
-      System.exit(sum);
+      //System.exit(sum);
+      pool.shutdown();
       //  correctorThread.interrupt();
   }
     }
