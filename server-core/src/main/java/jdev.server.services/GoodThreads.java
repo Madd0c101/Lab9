@@ -10,8 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import static org.apache.tomcat.jni.Time.sleep;
 
-public class Thread {
-    private static final Logger log = LoggerFactory.getLogger(Thread.class);
+public class GoodThreads {
+    private static final Logger log = LoggerFactory.getLogger(GoodThreads.class);
     static int account = 0;
     static int transNum = 10000;
     static int threadNum = 200;

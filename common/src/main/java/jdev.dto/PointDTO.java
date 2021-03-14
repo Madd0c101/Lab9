@@ -3,10 +3,12 @@ package jdev.dto;
 /**
  * Created by user on 31.01.2021.
  */
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
     public class PointDTO {
+
     private double lat;
     private double lon;
     private String autoId;
@@ -57,4 +59,5 @@ import com.fasterxml.jackson.databind.ObjectMapper;
     public long getTime() {
         return time;
     }
+
 }

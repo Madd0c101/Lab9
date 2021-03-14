@@ -3,7 +3,7 @@ import jdev.domain.RestRequest;
 import jdev.server.jpa.JpaApplication;
 import jdev.server.main.controllers.CounterController_SRV;
 import jdev.server.services.Msgpost;
-import jdev.server.services.Thread;
+import jdev.server.services.GoodThreads;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import jdev.server.jpa.JpaApplication;
@@ -42,7 +42,7 @@ public class Application {
     public static void main(String[] args) throws InterruptedException {
        // SpringApplication.run(JpaApplication.class, args);
        // SpringApplication.run(Application.class, args);
-        Thread.start();
+        GoodThreads.start();
 
 
     }
